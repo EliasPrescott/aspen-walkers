@@ -1,0 +1,21 @@
+typst:
+  type: Web
+  title: "Typst: Compose papers faster"
+  author: Typst GmbH
+  url: https://typst.app/
+
+typst-github:
+  type: Web
+  title: "typst/typst: A new markup-based typesetting system that is powerful and easy to learn"
+  author: Typst GmbH
+  url: https://github.com/typst/typst/
+
+better-software-conference:
+  type: Web
+  title: "BSC 2025"
+  url: https://bettersoftwareconference.com/
+
+better-software-conference-yt:
+  type: Web
+  title: "Better Software Conference - YouTube"
+  url: https://www.youtube.com/@BetterSoftwareConference
