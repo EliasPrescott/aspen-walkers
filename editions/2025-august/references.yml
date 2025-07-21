@@ -19,3 +19,18 @@ better-software-conference-yt:
   type: Web
   title: "Better Software Conference - YouTube"
   url: https://www.youtube.com/@BetterSoftwareConference
+
+pro-git:
+  type: Book
+  title: Pro Git
+  author: 
+   - Scott Chacon
+   - Ben Straub
+  publisher: Apress
+  edition: 2
+  date: 2014
+
+pro-git-web:
+  type: Web
+  title: Git
+  url: https://git-scm.com/book/en/v2
