@@ -138,13 +138,18 @@
     subtitle: "A conference to keep an eye on.",
     author: "Elias Prescott",
     contents: [
-      Recently, somewhere in a small town in Sweden, there has been the inaugural meeting of the Better Software Conference @better-software-conference.
+      Recently, somewhere in a small town in Sweden, there was the inaugural meeting of the Better Software Conference @better-software-conference.
       This is a very small and exclusive conference with the goal of improving the quality of software development.
 
       Only a few of the talks are currently available on the YouTube channel @better-software-conference-yt, but I have loved what I have seen so far.
       Casey Muratori's opening talk on the history of OOP (Object Oriented Programming) was fascinating and I already find myself wanting to watch it again.
 
-      #image("./casey-talk-thumbnail.jpg", alt: "The Big OOPs: Anatomy of a Thirty-five-year Mistake")
+      #figure(
+        link("https://youtu.be/wo84LFzx5nI")[
+          #image("./casey-talk-thumbnail.jpg", alt: "The Big OOPs: Anatomy of a Thirty-five-year Mistake")
+        ],
+        caption: [Click the image to watch the talk on YouTube.],
+      ) <casey-talk-figure>
 
       I would highly recommend that every programmer watch Casey's talk because I think it is a great examination of how the OOP mindset has mislead the industry in specific ways.
       His point about Alan Kay's and Bjarne Stroustrup's focus on encapsulation and the possible damage that has caused was very interesting and something I think every programmer would do well to consider.
