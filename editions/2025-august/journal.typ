@@ -116,7 +116,7 @@
 #pagebreak()
 
 #article(
-  title: "A Call for Participation",
+  title: "Call for Participation",
   subtitle: "A tantalizing opportunity...",
   author: "You?",
   contents: [
@@ -127,6 +127,8 @@
     - Article on a new/old technology and how you have used or would like to use it.
     - Review of a scholarly paper, conference talk, book, podcast episode, or some other form of media that is relevant to the life or work of an IT professional.
     - Spotlight on interesting technologies or projects.
+
+    Visit our #underline[#link("https://github.com/EliasPrescott/aspen-walkers")[GitHub repo]] to find more information and start contributing!
   ],
 )
 
