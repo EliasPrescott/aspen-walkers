@@ -44,6 +44,8 @@
   ]
 
   contents
+
+  v(36pt, weak: true)
 }
 
 #article(
@@ -65,6 +67,33 @@
     To consider software and the tools we use to build it, in a slow and deliberate manner.
   ],
 )
+
+#article(
+  title: "The Better Software Conference",
+  subtitle: "A conference to keep an eye on.",
+  author: "Elias Prescott",
+  contents: [
+    Recently, somewhere in a small town in Sweden, there was the inaugural meeting of the Better Software Conference @better-software-conference.
+    This is a very small and exclusive conference with the goal of improving the quality of software development.
+
+    Only a few of the talks are currently available on the YouTube channel @better-software-conference-yt, but I have loved what I have seen so far.
+    Casey Muratori's opening talk on the history of OOP (Object Oriented Programming) was fascinating and I already find myself wanting to watch it again.
+
+    #figure(
+      link("https://youtu.be/wo84LFzx5nI")[
+        #image("./casey-talk-thumbnail.jpg", alt: "The Big OOPs: Anatomy of a Thirty-five-year Mistake", width: 75%)
+      ],
+      caption: [Click the image to watch the talk on YouTube.],
+    ) <casey-talk-figure>
+
+    I would highly recommend that every programmer watch Casey's talk because I think it is a great examination of how the OOP mindset has mislead the industry in specific ways.
+    His point about Alan Kay's and Bjarne Stroustrup's focus on encapsulation and the possible damage that has caused was very interesting and something I think every programmer would do well to consider.
+    There are many more talks that I am looking forward to as well.
+    I have heard interesting things about Eskil Steenberg and his body of work, so I am looking forward to both of his talks.
+  ],
+)
+
+#pagebreak()
 
 #article(
   title: "Making Memes with Typst",
@@ -113,82 +142,54 @@
   ],
 )
 
-#pagebreak()
-
 #article(
   title: "Call for Participation",
   subtitle: "A tantalizing opportunity...",
   author: "You?",
   contents: [
     If you would like to submit an article to this journal, please let me know!
-    This is not the final draft of the August 2025 edition, so there is still time if you would like to submit your writing for this edition.
-    Here is a non-exhaustive list of the kind of submissions that would fit the journal:
+    I am planning on releasing a new edition of the journal every month, so I am always open to contributions.
+    Here is a rough list of the kind of submissions that would fit the journal:
 
     - Article on a new/old technology and how you have used or would like to use it.
     - Review of a scholarly paper, conference talk, book, podcast episode, or some other form of media that is relevant to the life or work of an IT professional.
     - Spotlight on interesting technologies or projects.
+    - Original cover artwork.
 
     Visit our #underline[#link("https://github.com/EliasPrescott/aspen-walkers")[GitHub repo]] to find more information and start contributing!
   ],
 )
 
-#columns(2)[
-  #article(
-    title: "The Better Software Conference",
-    subtitle: "A conference to keep an eye on.",
-    author: "Elias Prescott",
-    contents: [
-      Recently, somewhere in a small town in Sweden, there was the inaugural meeting of the Better Software Conference @better-software-conference.
-      This is a very small and exclusive conference with the goal of improving the quality of software development.
+#pagebreak()
 
-      Only a few of the talks are currently available on the YouTube channel @better-software-conference-yt, but I have loved what I have seen so far.
-      Casey Muratori's opening talk on the history of OOP (Object Oriented Programming) was fascinating and I already find myself wanting to watch it again.
+#article(
+  title: "Books Every Programmer Should Know",
+  subtitle: "Pro Git 2nd Edition",
+  author: "Elias Prescott",
+  contents: [
+    Git is one of those tools that has become nearly ubiquitous for modern software development.
+    Version control is a vital tool for any kind of programming, but it took a while for Git to rise to the top.
+    Even now, there are plenty of competitors to Git, old and new, that still enjoy significant usage.
+    But, if you are a student or a new programmer, Git is your best bet to learn.
+    Even if you somehow land a job at a company that doesn't use Git, you will still benefit from understanding how Git works.
+    Git has almost become the lingua franca of version control.
+    To many people, Git #emph[is] version control.
 
-      #figure(
-        link("https://youtu.be/wo84LFzx5nI")[
-          #image("./casey-talk-thumbnail.jpg", alt: "The Big OOPs: Anatomy of a Thirty-five-year Mistake")
-        ],
-        caption: [Click the image to watch the talk on YouTube.],
-      ) <casey-talk-figure>
+    All that to say, I would highly recommend the book Pro Git @pro-git.
+    It is available to read online for free.
+    It is also available to download for free in PDF and EPUB formats @pro-git-web.
 
-      I would highly recommend that every programmer watch Casey's talk because I think it is a great examination of how the OOP mindset has mislead the industry in specific ways.
-      His point about Alan Kay's and Bjarne Stroustrup's focus on encapsulation and the possible damage that has caused was very interesting and something I think every programmer would do well to consider.
-      There are many more talks that I am looking forward to as well.
-      I have heard interesting things about Eskil Steenberg and his body of work, so I am looking forward to both of his talks.
-    ],
-  )
-
-  #colbreak()
-
-  #article(
-    title: "Books Every Programmer Should Know",
-    subtitle: "Pro Git 2nd Edition",
-    author: "Elias Prescott",
-    contents: [
-      Git is one of those tools that has become nearly ubiquitous for modern software development.
-      Version control is a vital tool for any kind of programming, but it took a while for Git to rise to the top.
-      Even now, there are plenty of competitors to Git, old and new, that still enjoy significant usage.
-      But, if you are a student or a new programmer, Git is your best bet to learn.
-      Even if you somehow land a job at a company that doesn't use Git, you will still benefit from understanding how Git works.
-      Git has almost become the lingua franca of version control.
-      To many people, Git #emph[is] version control.
-
-      All that to say, I would highly recommend the book Pro Git @pro-git.
-      It is available to read online for free.
-      It is also available to download for free in PDF and EPUB formats @pro-git-web.
-
-      I think it is a fantastic introduction to Git and the motivations behind version control.
-      It introduces all the basic concepts and tools that should cover 99% of what you need for day-to-day collaboration on a programming team.
-      But it also goes further in depth.
-      One section covers debugging with Git, showing how you can use `git blame` and `git bisect` to quickly isolate tricky bugs and regressions in your codebases.
-      The last chapter discusses the internals of Git.
-      Breaking down the distinction between the plumbing and porcelain of Git.
-      
-      If you want a deeper understanding of Git and version control in general, I would highly recommend this book.
-      Plus, you can't beat free!
-    ],
-  )
-]
+    I think it is a fantastic introduction to Git and the motivations behind version control.
+    It introduces all the basic concepts and tools that should cover 99% of what you need for day-to-day collaboration on a programming team.
+    But it also goes further in depth.
+    One section covers debugging with Git, showing how you can use `git blame` and `git bisect` to quickly isolate tricky bugs and regressions in your codebases.
+    The last chapter discusses the internals of Git.
+    Breaking down the distinction between the plumbing and porcelain of Git.
+    
+    If you want a deeper understanding of Git and version control in general, I would highly recommend this book.
+    Plus, you can't beat free!
+  ],
+)
 
 #pagebreak()
 
