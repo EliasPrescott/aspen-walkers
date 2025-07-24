@@ -1,4 +1,4 @@
-# The Aspen Walker's Software Journal
+# The Aspen Walkers Software Journal
 
 A local journal discussing the craft of building and using software.
 

@@ -1,3 +1,2 @@
 *.pdf
-
-web/public/editions/*/
+dist/

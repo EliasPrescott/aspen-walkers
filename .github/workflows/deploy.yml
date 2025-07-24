@@ -19,17 +19,21 @@ jobs:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
 
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
       - name: Install Typst
         uses: typst-community/setup-typst@v4
 
       - name: Build Journals
-        working-directory: ./web/
-        run: ./build-journals.sh
+        run: dotnet fsi web/build-web.fsx
 
-      - name: Install, build, and upload your site
-        uses: withastro/action@v3
+      - name: Upload static files as artifact
+        id: deployment
+        uses: actions/upload-pages-artifact@v3
         with:
-          path: ./web/
+          path: dist/
 
   deploy:
     needs: build
