@@ -1,0 +1,111 @@
+---
+const months = [
+  'january', 'february', 'march', 'april', 'may', 'june',
+  'july', 'august', 'september', 'october', 'november', 'december'
+]
+const matches = import.meta.glob('/public/editions/*/journal.pdf', { eager: true })
+const editions = Object.values(matches)
+  .map(x => {
+    const pdfLink = x.default.replace(/^\/public\//,"")
+    const basePath = pdfLink.substring(0, pdfLink.lastIndexOf("/"))
+    const editionStr = basePath.substring(basePath.lastIndexOf("/") + 1)
+    const [year, month] = editionStr.split('-')
+    const coverImgLink = `${basePath}/cover.png`
+    return {
+      pdf: pdfLink,
+      png: coverImgLink,
+      year: year,
+      month: month,
+    }
+  })
+  .sort((a, b) => {
+    const yearDiff = b.year - a.year
+    if (yearDiff === 0) {
+      return months.indexOf(b.month) - months.indexOf(a.month)
+    }
+    return yearDiff
+  })
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Calistoga&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+  <body>
+    <h1>Aspen Walker's Software Journal</h1>
+
+    <p>
+      lorem ipsum blah
+    </p>
+
+    <div class="editionList">
+    {editions.map(edition => (
+      <div class="editionEntry">
+        <a href={edition.pdf}>
+          <figure>
+            <img src={edition.png} alt={`Cover for the ${edition.month} ${edition.year} edition of the journal.`} />
+            <figcaption>
+              <span class="month">{edition.month}</span>
+              <span class="year">{edition.year}</span>
+            </figcaption>
+          </figure>
+        </a>
+      </div>
+    ))}
+    </div>
+  </body>
+</html>
+
+<style>
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Calistoga';
+  }
+
+  p {
+    font-family: 'Quicksand';
+    font-size: larger;
+  }
+
+  .editionList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 32px;
+  }
+
+  .editionEntry {
+    display: flex;
+    justify-content: center;
+  }
+
+  .editionEntry figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+  }
+
+  .editionEntry figure img {
+    max-width: 300px;
+  }
+
+  .editionEntry figcaption {
+    font-size: x-large;
+  }
+
+  .editionEntry figcaption .month {
+    text-transform: capitalize;
+  }
+
+  .editionEntry figure img {
+    border: 2px solid black;
+    border-radius: 4px;
+  }
+</style>
