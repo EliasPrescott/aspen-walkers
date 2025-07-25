@@ -228,7 +228,7 @@
     After waiting for my DNS entries to propagate, I finally could open the page I deployed in my browser, only to discover that my links and edition titles were all broken.
 
     That is when I discovered that Astro rewrites the path to your public assets when it does an actual "production" build.
-    So the behavior that I observed from Astro in development that I was relying on to make my process work was completely different from the behavior I got when I deployed the site.
+    So, the behavior that I observed from Astro in development, the behavior I was relying on to make my process work, was completely different from the behavior I got when I deployed the site.
     I am not blaming Astro for this, but it brings up the same problem I had with Hugo.
     I was trying to take my paradigm or my view of the problem and cram it into Astro's framework for doing things.
     Astro has a lot of great features, and its paradigm is probably really great if you are working on the kind of site that Astro is designed to build.
