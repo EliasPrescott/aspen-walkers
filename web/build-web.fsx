@@ -9,6 +9,12 @@ open Editions
 let buildDir = "dist"
 let makeBuildPath path = Path.Combine (buildDir, path)
 
+type BuiltEdition = {
+    edition: Edition
+    pdfLink: string
+    coverLink: string
+}
+
 module Edition =
     let pdfPath edition =
         $"{edition.year}-{edition.month}-Journal.pdf"
@@ -25,14 +31,16 @@ let execute cmd args =
     let startInfo = ProcessStartInfo ()
     startInfo.FileName <- cmd
     startInfo.CreateNoWindow <- true
+    startInfo.RedirectStandardOutput <- true
     for x in args do
         startInfo.ArgumentList.Add x
     use p = new Process ()
     p.StartInfo <- startInfo
     p.Start () |> ignore
     p.WaitForExit ()
+    p.StandardOutput
 
-let indexView =
+let buildIndexView builtEditions =
     html [] [
         head [] [
             title [] [str "Aspen Walkers Software Journal"]
@@ -42,23 +50,23 @@ let indexView =
             h1 [] [str "Aspen Walkers Software Journal"]
 
             let editions =
-                editions
+                builtEditions
                 |> List.sortWith (fun a b ->
-                    let yearDiff = b.year - a.year
+                    let yearDiff = b.edition.year - a.edition.year
                     if yearDiff <> 0u then
                         int(yearDiff)
                     else
                         // break year ties using the month
-                        int(b.month) - int(a.month))
+                        int(b.edition.month) - int(a.edition.month))
 
             div [_class "editionList"] [
-                for edition in editions do
+                for builtEdition in editions do
+                    let edition = builtEdition.edition
                     div [_class "editionEntry"] [
-                        a [_href <| Edition.pdfPath edition] [
+                        a [_href builtEdition.pdfLink] [
                             figure [] [
-                                let imgPath = Edition.coverPath edition
                                 let title = Edition.title edition
-                                img [_src imgPath; _alt $"Cover for {title} edition of the journal."]
+                                img [_src builtEdition.coverLink; _alt $"Cover for {title} edition of the journal."]
                                 figcaption [] [Text title] 
                             ]
                         ]
@@ -67,19 +75,33 @@ let indexView =
         ]
     ]
 
+let getVersion () =
+    execute "git" ["log"; "-n"; "1"; "--pretty=format:%H"]
+    |> _.ReadToEnd()
+
 let buildEditions () =
+    let version = getVersion ()
     if Directory.Exists buildDir then
         Directory.Delete (buildDir, true)
     Directory.CreateDirectory buildDir |> ignore
     File.Copy ("./web/styles.css", makeBuildPath "styles.css")
-    for edition in editions do
-        execute "typst" ["compile"; edition.journalFile; Edition.pdfPath edition |> makeBuildPath]
-        execute "typst" ["compile"; "--pages"; "1"; "--ppi"; "72"; edition.journalFile; Edition.coverPath edition |> makeBuildPath]
+
+    [
+        for edition in editions do
+            let pdfPath = Edition.pdfPath edition
+            let coverPath = Edition.coverPath edition
+            execute "typst" ["compile"; edition.journalFile; makeBuildPath pdfPath] |> ignore
+            execute "typst" ["compile"; "--pages"; "1"; "--ppi"; "72"; edition.journalFile; makeBuildPath coverPath] |> ignore
+            {
+                edition = edition
+                pdfLink = pdfPath + $"?version={version}"
+                coverLink = coverPath + $"?version={version}"
+            }
+    ]
 
 let main () =
     buildEditions ()
-
-    indexView
+    |> buildIndexView
     |> RenderView.AsBytes.htmlDocument 
     |> fun bytes ->
         File.WriteAllBytes (makeBuildPath "index.html", bytes)
