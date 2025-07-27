@@ -52,7 +52,7 @@ let buildIndexView builtEditions =
             p [] [
                 str """
                 This journal is an attempt to bring out the joy of developing and using software.
-                The journal format was chosen explicitly to make the process of reading and writing the articles more of an intentional process.
+                The journal format was chosen explicitly to make the process of reading and writing the articles more intentional.
                 If you would like to contribute in any way, come visit the
                 """
                 a [_href "https://github.com/EliasPrescott/aspen-walkers"] [str "GitHub repo"]
