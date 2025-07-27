@@ -49,6 +49,16 @@ let buildIndexView builtEditions =
         body [] [
             h1 [] [str "Aspen Walkers Software Journal"]
 
+            p [] [
+                str """
+                This journal is an attempt to bring out the joy of developing and using software.
+                The journal format was chosen explicitly to make the process of reading and writing the articles more of an intentional process.
+                If you would like to contribute in any way, come visit the
+                """
+                a [_href "https://github.com/EliasPrescott/aspen-walkers"] [str "GitHub repo"]
+                str "."
+            ]
+
             let editions =
                 builtEditions
                 |> List.sortWith (fun a b ->
