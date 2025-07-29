@@ -5,3 +5,4 @@
  - Review of A Philosophy of Software Design
  - The Importance of Rough Drafts and Demos in Software Development
  - Review of https://grugbrain.dev/
+ - Intro to [Bauble](https://bauble.studio/)
