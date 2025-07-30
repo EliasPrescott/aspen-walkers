@@ -8,3 +8,4 @@
  - Intro to [Bauble](https://bauble.studio/)
  - Intro to [Janet](https://janet-lang.org/)
  - Intro to [Odin](https://odin-lang.org/)
+ - Exploring Event Sourcing with Kafka and Flink
