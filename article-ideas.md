@@ -6,3 +6,5 @@
  - The Importance of Rough Drafts and Demos in Software Development
  - Review of https://grugbrain.dev/
  - Intro to [Bauble](https://bauble.studio/)
+ - Intro to [Janet](https://janet-lang.org/)
+ - Intro to [Odin](https://odin-lang.org/)
