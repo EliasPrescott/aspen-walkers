@@ -24,6 +24,6 @@ let editions = [
         year = 2025u
         month = Month.August
         journalFile = "editions/2025-august/journal.typ"
-        draft = true
+        draft = false
     }
 ]
