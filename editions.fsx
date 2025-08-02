@@ -26,4 +26,10 @@ let editions = [
         journalFile = "editions/2025-august/journal.typ"
         draft = false
     }
+    {
+        year = 2025u
+        month = Month.September
+        journalFile = "editions/2025-september/journal.typ"
+        draft = true
+    }
 ]
