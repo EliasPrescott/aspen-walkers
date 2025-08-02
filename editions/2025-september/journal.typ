@@ -3,13 +3,13 @@
 )
 
 #block(width: 100%)[
-  #set text(28pt, font: "Calistoga", weight: "regular", fill: white, stroke: black)
+  #set text(28pt, font: "Oxanium", weight: "extrabold", fill: white, stroke: black)
   = Aspen Walkers \ Software Journal
 ]
 
 #align(center + horizon)[
   #block()[
-    #set text(28pt, font: "Calistoga", weight: "regular", fill: white, stroke: black)
+    #set text(28pt, font: "Oxanium", weight: "extrabold", fill: white, stroke: black)
     == September 2025
   ]
 ]
