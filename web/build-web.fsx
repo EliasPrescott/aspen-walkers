@@ -22,7 +22,8 @@ type BuildInfo = {
 
 module Edition =
     let pdfPath edition =
-        $"{edition.year}-{edition.month}-Journal.pdf"
+        let draftPart = if edition.draft then "-Draft" else ""
+        $"{edition.year}-{edition.month}-Journal{draftPart}.pdf"
 
     let coverPath edition =
         $"{edition.year}-{edition.month}-Cover.png"
