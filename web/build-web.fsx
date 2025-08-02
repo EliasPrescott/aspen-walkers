@@ -15,6 +15,11 @@ type BuiltEdition = {
     coverLink: string
 }
 
+type BuildInfo = {
+    editions: BuiltEdition list
+    version: string
+}
+
 module Edition =
     let pdfPath edition =
         $"{edition.year}-{edition.month}-Journal.pdf"
@@ -40,11 +45,11 @@ let execute cmd args =
     p.WaitForExit ()
     p.StandardOutput
 
-let buildIndexView builtEditions =
+let buildIndexView buildInfo =
     html [] [
         head [] [
             title [] [str "Aspen Walkers Software Journal"]
-            link [_href "/styles.css"; _rel "stylesheet"]
+            link [_href $"/styles.css?version={buildInfo.version}"; _rel "stylesheet"]
         ]
         body [] [
             h1 [] [str "Aspen Walkers Software Journal"]
@@ -60,7 +65,7 @@ let buildIndexView builtEditions =
             ]
 
             let editions =
-                builtEditions
+                buildInfo.editions
                 |> List.sortWith (fun a b ->
                     let yearDiff = b.edition.year - a.edition.year
                     if yearDiff <> 0u then
@@ -96,18 +101,21 @@ let buildEditions () =
     Directory.CreateDirectory buildDir |> ignore
     File.Copy ("./web/styles.css", makeBuildPath "styles.css")
 
-    [
-        for edition in editions do
-            let pdfPath = Edition.pdfPath edition
-            let coverPath = Edition.coverPath edition
-            execute "typst" ["compile"; edition.journalFile; makeBuildPath pdfPath] |> ignore
-            execute "typst" ["compile"; "--pages"; "1"; "--ppi"; "72"; edition.journalFile; makeBuildPath coverPath] |> ignore
-            {
-                edition = edition
-                pdfLink = pdfPath + $"?version={version}"
-                coverLink = coverPath + $"?version={version}"
-            }
-    ]
+    {
+        editions = [
+            for edition in editions do
+                let pdfPath = Edition.pdfPath edition
+                let coverPath = Edition.coverPath edition
+                execute "typst" ["compile"; edition.journalFile; makeBuildPath pdfPath] |> ignore
+                execute "typst" ["compile"; "--pages"; "1"; "--ppi"; "72"; edition.journalFile; makeBuildPath coverPath] |> ignore
+                {
+                    edition = edition
+                    pdfLink = pdfPath + $"?version={version}"
+                    coverLink = coverPath + $"?version={version}"
+                }
+        ]
+        version = version
+    }
 
 let main () =
     buildEditions ()
