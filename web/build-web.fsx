@@ -107,8 +107,8 @@ let buildEditions () =
             for edition in editions do
                 let pdfPath = Edition.pdfPath edition
                 let coverPath = Edition.coverPath edition
-                execute "typst" ["compile"; edition.journalFile; makeBuildPath pdfPath] |> ignore
-                execute "typst" ["compile"; "--pages"; "1"; "--ppi"; "72"; edition.journalFile; makeBuildPath coverPath] |> ignore
+                execute "typst" ["compile"; edition.journalFile; makeBuildPath pdfPath; "--font-path"; "fonts/"] |> ignore
+                execute "typst" ["compile"; "--pages"; "1"; "--ppi"; "72"; edition.journalFile; makeBuildPath coverPath; "--font-path"; "fonts/"] |> ignore
                 {
                     edition = edition
                     pdfLink = pdfPath + $"?version={version}"
