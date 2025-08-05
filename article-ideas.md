@@ -9,3 +9,4 @@
  - Intro to [Janet](https://janet-lang.org/)
  - Intro to [Odin](https://odin-lang.org/)
  - Exploring Event Sourcing with Kafka and Flink
+ - Making Simple SPAs with PocketBase + Mithril JS
