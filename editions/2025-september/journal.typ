@@ -1,5 +1,5 @@
 #set page(
-  background: box(height: 100%, inset: 8pt, stroke: 16pt + gradient.linear(..color.map.rainbow))[
+  background: box(height: 100%, inset: 8pt)[
     #image("./cover-img.png", height: 100%)
   ],
 )
